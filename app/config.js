@@ -165,7 +165,11 @@ var pipeline = [
             Object.keys(service).forEach(function (key) {
                 serviceNameKey = key;
             });
-            context.result.database.uri = service[serviceNameKey][0].credentials.uri
+            var uri = service[serviceNameKey][0].credentials.uri;
+            if (uri.slice(-1) == ';' ) {
+                uri = uri.slice(0, -1);
+            }
+            context.result.database.uri = uri;
         }
     },
 
