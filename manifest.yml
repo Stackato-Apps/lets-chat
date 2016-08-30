@@ -1,3 +1,5 @@
 applications:
 - name: lets-chat
   memory: 256M
+  services:
+  - cfmongo
