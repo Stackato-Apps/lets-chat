@@ -1,6 +1,3 @@
 applications:
 - name: lets-chat
   memory: 256M
-  services:
-    ${name}-db:
-      type: mongodb

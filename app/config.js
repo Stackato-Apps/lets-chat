@@ -159,6 +159,14 @@ var pipeline = [
         if (process.env.MONGODB_URL) {
             context.result.database.uri = process.env.MONGODB_URL;
         }
+        if (process.env.VCAP_SERVICES) {
+            var service = JSON.parse(process.env.VCAP_SERVICES);
+            var serviceNameKey;
+            Object.keys(service).forEach(function (key) {
+                serviceNameKey = key;
+            });
+            context.result.database.uri = service[serviceNameKey][0].credentials.uri
+        }
     },
 
     function openShift(context) {
